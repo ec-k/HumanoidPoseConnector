@@ -1,3 +1,3 @@
 # Humanoid Pose Connector
 
-Unityにおいて，異なるアプリケーション間で
+This app only sends and receives the bone rotations (Quaternions) of Humanoid avatars.
