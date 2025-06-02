@@ -1,0 +1,23 @@
+{
+  "name": "com.ec2k.humanoidooseconnector",
+  "version": "0.1.0",
+  "displayName": "HumanoidPoseConnector",
+  "description": "Send & receive humanoid bone rotations via OSC.",
+  "unity": "2022.3",
+  "keywords": [
+    "avatar",
+    "osc"
+  ],
+  "author": {
+    "name": "EC-K",
+    "url": "https://github.com/ec-k"
+  },
+  "dependencies": {
+    "com.hecomi.uosc": "https://github.com/hecomi/uOSC.git#upm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ec-k/HumanoidPoseConnector"
+  },
+  "license": "MIT"
+}
