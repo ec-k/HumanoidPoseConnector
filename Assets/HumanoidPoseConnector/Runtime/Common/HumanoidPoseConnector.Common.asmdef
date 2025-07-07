@@ -1,11 +1,7 @@
 {
-    "name": "HumanoidPoseConnector",
+    "name": "HumanoidPoseConnector.Common",
     "rootNamespace": "HumanoidPoseConnector",
-    "references": [
-        "GUID:e8063cf3a345f9c46b7c7c4f14d54285",
-        "GUID:195943486d1a0ab419dbc558ae56b223",
-        "GUID:f5d71c37a698ac048865b766f6bae5fd"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -9,7 +9,7 @@ namespace HumanoidPoseConnector
     public class PoseReceiver : MonoBehaviour
     {
         uOscServer _server;
-        public float LatestReceivedTime { get; private set; }
+        public float LastReceivedTime { get; private set; }
 
         public Dictionary<HumanBodyBones, Quaternion> Results { get; set; }
 
@@ -25,7 +25,7 @@ namespace HumanoidPoseConnector
             var boneKey = (HumanBodyBones)Enum.Parse(typeof(HumanBodyBones), message.address);
             var rotation = new Quaternion((float)message.values[0], (float)message.values[1], (float)message.values[2], (float)message.values[3]);
             Results[boneKey] = rotation;
-            LatestReceivedTime = Time.time;
+            LastReceivedTime = Time.time;
         }
     }
 }
