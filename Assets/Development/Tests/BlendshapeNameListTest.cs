@@ -1,19 +1,17 @@
 using NUnit.Framework;
-using System.Collections;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace HumanoidPoseConnector.Tests
 {
     public class BlendshapeNameListTest
     {
-        [UnityTest]
-        public IEnumerator VRoidDefaultNameExistenceTest()
+        [Test]
+        public void VRoidDefaultNameExistenceTest()
         {
-            var avatarPrefab = Resources.Load<GameObject>("Avatars/DefauldBlendshapeAvatar/Nico");
-            Assert.IsNotNull(avatarPrefab, "Avatar is not found.");
-            var avatar = GameObject.Instantiate(avatarPrefab);
-            yield return null;  // wait until avatar loading is completed.
+            var path = "Assets/Resources/Avatars/DefauldBlendshapeAvatar/Nico.prefab";
+            var avatar = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            Assert.IsNotNull(avatar, "Avatar is not found.");
 
             var faceObj = avatar.transform.Find("Face");
             var skm = faceObj.GetComponent<SkinnedMeshRenderer>();
@@ -29,13 +27,12 @@ namespace HumanoidPoseConnector.Tests
             Assert.Pass();
         }
 
-        [UnityTest]
-        public IEnumerator PerfectSyncNameExistenceTest()
+        [Test]
+        public void PerfectSyncNameExistenceTest()
         {
-            var avatarPrefab = Resources.Load<GameObject>("Avatars/PerfectSyncAvatar/violet_perfectSync");
-            Assert.IsNotNull(avatarPrefab, "Avatar is not found.");
-            var avatar = GameObject.Instantiate(avatarPrefab);
-            yield return null;  // wait until avatar loading is completed.
+            var path = "Assets/Resources/Avatars/PerfectSyncAvatar/violet_perfectSync.prefab";
+            var avatar = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            Assert.IsNotNull(avatar, "Avatar is not found.");
 
             var faceObj = avatar.transform.Find("Face");
             var skm = faceObj.GetComponent<SkinnedMeshRenderer>();
