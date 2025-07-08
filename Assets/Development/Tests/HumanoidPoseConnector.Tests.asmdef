@@ -1,6 +1,6 @@
 {
-    "name": "Tests",
-    "rootNamespace": "",
+    "name": "HumanoidPoseConnector.Tests",
+    "rootNamespace": "HumanoidPoseConnector.Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
