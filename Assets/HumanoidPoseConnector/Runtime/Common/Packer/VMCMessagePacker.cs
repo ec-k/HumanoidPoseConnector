@@ -5,8 +5,8 @@ namespace HumanoidPoseConnector
 {
     public class VMCMessagePacker
     {
-        const string _availabilityMessageAddress = "/VMC/Ext/OK";
-        const string _timeMessageAddress = "/VMC/Ext/T";
+        const string AvailabilityMessageAddress = "/VMC/Ext/OK";
+        const string TimeMessageAddress = "/VMC/Ext/T";
 
         Animator _avatarAnimator;
         SkinnedMeshRenderer _faceSkinMesh;
@@ -33,10 +33,10 @@ namespace HumanoidPoseConnector
         Message GenerateAvailabilityMessage(bool isAvailable)
         {
             int value = isAvailable ? 1 : 0;
-            return new Message(_availabilityMessageAddress, value);
+            return new Message(AvailabilityMessageAddress, value);
         }
 
         Message GenerateTimeMessage(float time)
-            => new Message(_timeMessageAddress, time);
+            => new Message(TimeMessageAddress, time);
     }
 }
