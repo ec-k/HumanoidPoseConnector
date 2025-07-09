@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HumanoidPoseConnector
 {
     [RequireComponent(typeof(uOscClient))]
-    public class PoseSender : MonoBehaviour
+    public class HumanoidPoseSender : MonoBehaviour
     {
         uOscClient _client;
         [SerializeField] GameObject _avatar;
@@ -50,6 +50,7 @@ namespace HumanoidPoseConnector
             }
         }
 
+#nullable enable
         void SendAvatarPoseMessage(Bundle? optionalMessage = null)
         {
             var avatarMsg = new Bundle(Timestamp.Now);
@@ -67,5 +68,6 @@ namespace HumanoidPoseConnector
                 vmcMsg.Add(optionalMessage);
             _client.Send(vmcMsg);
         }
+#nullable disable
     }
 }

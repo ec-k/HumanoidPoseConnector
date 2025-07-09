@@ -6,7 +6,7 @@ using uOSC;
 namespace HumanoidPoseConnector
 {
     [RequireComponent(typeof(uOscServer))]
-    public class PoseReceiver : MonoBehaviour
+    public class HumanoidPoseReceiver : MonoBehaviour
     {
         uOscServer _server;
         public Dictionary<HumanBodyBones, (Vector3, Quaternion)> PoseResults { get; private set; }
