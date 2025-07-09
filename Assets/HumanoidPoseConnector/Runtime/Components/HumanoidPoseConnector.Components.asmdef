@@ -1,6 +1,6 @@
 {
-    "name": "HumanoidPoseConnector.Apps",
-    "rootNamespace": "HumanoidPoseConnector.Apps",
+    "name": "HumanoidPoseConnector.Components",
+    "rootNamespace": "HumanoidPoseConnector.Components",
     "references": [
         "GUID:e8063cf3a345f9c46b7c7c4f14d54285",
         "GUID:195943486d1a0ab419dbc558ae56b223"
