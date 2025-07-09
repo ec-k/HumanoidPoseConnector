@@ -14,6 +14,7 @@ namespace HumanoidPoseConnector
         public float LastReceivedTime { get; private set; }
         public bool IsAvailable { get; private set; }
 
+        public event Action<Message> OnMessageReceived;
         public event Action OnBlendshapeApplyRequested;
 
         const string AvailabilityMessageAddress = "/VMC/Ext/OK";
@@ -32,6 +33,8 @@ namespace HumanoidPoseConnector
 
         void OnDataReceived(Message message)
         {
+            OnMessageReceived?.Invoke(message);
+
             var address = message.address;
             switch (address)
             {
