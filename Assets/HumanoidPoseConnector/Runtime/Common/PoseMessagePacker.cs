@@ -1,24 +1,100 @@
 using uOSC;
 using UnityEngine;
-using System;
+using System.Collections.Generic;
 
 namespace HumanoidPoseConnector
 {
+    
+
     public class PoseMessagePacker
     {
         const string _address = "/VMC/Ext/Bone/Pos";
 
-        public Bundle BundleHumanoidBones(Animator animator)
+        List<HumanBodyBones> poseBones = new()
+        {
+            HumanBodyBones.Hips,
+            HumanBodyBones.Spine,
+            HumanBodyBones.Chest,
+            HumanBodyBones.UpperChest,
+            HumanBodyBones.Neck,
+            HumanBodyBones.Head,
+            HumanBodyBones.Jaw,
+            HumanBodyBones.LeftEye,
+            HumanBodyBones.RightEye,
+            HumanBodyBones.LeftShoulder,
+            HumanBodyBones.LeftUpperArm,
+            HumanBodyBones.LeftLowerArm,
+            HumanBodyBones.LeftHand,
+            HumanBodyBones.LeftUpperLeg,
+            HumanBodyBones.LeftLowerLeg,
+            HumanBodyBones.LeftFoot,
+            HumanBodyBones.LeftToes,
+            HumanBodyBones.RightShoulder,
+            HumanBodyBones.RightUpperArm,
+            HumanBodyBones.RightLowerArm,
+            HumanBodyBones.RightHand,
+            HumanBodyBones.RightUpperLeg,
+            HumanBodyBones.RightLowerLeg,
+            HumanBodyBones.RightFoot,
+            HumanBodyBones.RightToes,
+        };
+
+        List<HumanBodyBones> fingerBones = new()
+        {
+            HumanBodyBones.LeftThumbProximal,
+            HumanBodyBones.LeftThumbIntermediate,
+            HumanBodyBones.LeftThumbDistal,
+            HumanBodyBones.LeftIndexProximal,
+            HumanBodyBones.LeftIndexIntermediate,
+            HumanBodyBones.LeftIndexDistal,
+            HumanBodyBones.LeftMiddleProximal,
+            HumanBodyBones.LeftMiddleIntermediate,
+            HumanBodyBones.LeftMiddleDistal,
+            HumanBodyBones.LeftRingProximal,
+            HumanBodyBones.LeftRingIntermediate,
+            HumanBodyBones.LeftRingDistal,
+            HumanBodyBones.LeftLittleProximal,
+            HumanBodyBones.LeftLittleIntermediate,
+            HumanBodyBones.LeftLittleDistal,
+            HumanBodyBones.RightThumbProximal,
+            HumanBodyBones.RightThumbIntermediate,
+            HumanBodyBones.RightThumbDistal,
+            HumanBodyBones.RightIndexProximal,
+            HumanBodyBones.RightIndexIntermediate,
+            HumanBodyBones.RightIndexDistal,
+            HumanBodyBones.RightMiddleProximal,
+            HumanBodyBones.RightMiddleIntermediate,
+            HumanBodyBones.RightMiddleDistal,
+            HumanBodyBones.RightRingProximal,
+            HumanBodyBones.RightRingIntermediate,
+            HumanBodyBones.RightRingDistal,
+            HumanBodyBones.RightLittleProximal,
+            HumanBodyBones.RightLittleIntermediate,
+            HumanBodyBones.RightLittleDistal,
+        };
+
+        public Bundle GeneratePoseMessageBundle(Animator animator)
+        {
+            var bundle = new Bundle();
+            foreach (var bone in poseBones)
+            {
+                var message = GenerateBoneMessage(bone, animator);
+                if (message is Message validMsg)
+                    bundle.Add(validMsg);
+            }
+
+            return bundle;
+        }
+
+        public Bundle GenerateHandMessageBundle(Animator animator)
         {
             var bundle = new Bundle();
 
-            var values = Enum.GetValues(typeof(HumanBodyBones));
-            foreach (var boneObj in values)
+            foreach (var bone in fingerBones)
             {
-                var bone = (HumanBodyBones)boneObj;
-                var msg = GenerateBoneMessage(bone, animator);
-                if (msg is Message validMessage)
-                    bundle.Add(validMessage);
+                var message = GenerateBoneMessage(bone, animator);
+                if (message is Message validMsg)
+                    bundle.Add(validMsg);
             }
 
             return bundle;
@@ -27,7 +103,7 @@ namespace HumanoidPoseConnector
         Message? GenerateBoneMessage(HumanBodyBones bone, Animator animaator)
         {
             var boneTransform = animaator.GetBoneTransform(bone);
-            if (boneTransform is null)
+            if(boneTransform is null)
                 return null;
 
             var boneName = bone.ToString();
