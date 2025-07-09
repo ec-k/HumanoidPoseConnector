@@ -71,6 +71,14 @@ namespace HumanoidPoseConnector
             HumanBodyBones.RightLittleDistal,
         };
 
+        public Bundle PackAllBones(Animator animator)
+        {
+            var bundle = new Bundle();
+            bundle.Add(PackPoseMessageBundle(animator));
+            bundle.Add(PackHandMessageBundle(animator));
+            return bundle;
+        }
+
         public Bundle PackPoseMessageBundle(Animator animator)
         {
             var bundle = new Bundle();

@@ -7,6 +7,20 @@ namespace HumanoidPoseConnector
     {
         const string _address = "/VMC/Ext/Blend/Val";
 
+        public Bundle PackAllBlendshapes(SkinnedMeshRenderer skm)
+        {
+            var bundle = new Bundle();
+
+            var count = skm.sharedMesh.blendShapeCount;
+            for (var i = 0; i < count; i++)
+            {
+                var name = skm.sharedMesh.GetBlendShapeName(i);
+                var weight = skm.GetBlendShapeWeight(i);
+                bundle.Add(new Message(_address, name, weight));
+            }
+
+            return bundle;
+        }
 
         public Bundle PackVRMDefaultBlendshape(SkinnedMeshRenderer skm)
         {
