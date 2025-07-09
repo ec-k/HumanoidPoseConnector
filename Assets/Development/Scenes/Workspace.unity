@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &657035907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2614383575187201712, guid: 53620aada8a091a478d667126a2cc1b6, type: 3}
+  m_PrefabInstance: {fileID: 1554012968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +847,18 @@ PrefabInstance:
     - target: {fileID: 3806741059032919145, guid: 6d3696b0895b85e4898f1fbebc91c761, type: 3}
       propertyPath: m_Name
       value: HumanoidPoseSender
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229637938829979541, guid: 6d3696b0895b85e4898f1fbebc91c761, type: 3}
+      propertyPath: _avatar
+      value: 
+      objectReference: {fileID: 657035907}
+    - target: {fileID: 5229637938829979541, guid: 6d3696b0895b85e4898f1fbebc91c761, type: 3}
+      propertyPath: _sendingRate
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229637938829979541, guid: 6d3696b0895b85e4898f1fbebc91c761, type: 3}
+      propertyPath: _isPerfaceSync
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
