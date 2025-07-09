@@ -9,17 +9,13 @@ namespace HumanoidPoseConnector
         const string TimeMessageAddress = "/VMC/Ext/T";
 
         Animator _avatarAnimator;
-        SkinnedMeshRenderer _faceSkinMesh;
+        SkinnedMeshRenderer _skm;
 
-        public VMCMessagePacker()
-        { 
-        }
-
-        public Bundle GenerateVMCMessage(Bundle mainMessageBundle)
+        public Bundle PackVMCMessage(Bundle mainMessageBundle)
         {
             var bundle = new Bundle();
          
-            var availability = (_avatarAnimator is not null) && (_faceSkinMesh is not null);
+            var availability = (_avatarAnimator is not null) && (_skm is not null);
             var availabilityMsg = GenerateAvailabilityMessage(availability);
             var timeMsg = GenerateTimeMessage(Time.time);
 

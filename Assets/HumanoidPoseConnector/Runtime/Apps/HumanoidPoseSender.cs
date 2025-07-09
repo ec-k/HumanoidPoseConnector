@@ -54,15 +54,15 @@ namespace HumanoidPoseConnector
         {
             var avatarMsg = new Bundle(Timestamp.Now);
 
-            if (_sendPose) avatarMsg.Add(_poseMsgPacker.GeneratePoseMessageBundle(_animator));
-            if(_sendHand) avatarMsg.Add(_poseMsgPacker.GenerateHandMessageBundle(_animator));
+            if (_sendPose) avatarMsg.Add(_poseMsgPacker.PackPoseMessageBundle(_animator));
+            if(_sendHand) avatarMsg.Add(_poseMsgPacker.PackHandMessageBundle(_animator));
             if (_sendFacialBlendshapes)
                 if (_isPerfaceSync)
-                    avatarMsg.Add(_blendshapeMsgPacker.BundlePerfectSyncBlendshape(_faceMeshRenderer));
+                    avatarMsg.Add(_blendshapeMsgPacker.PackPerfectSyncBlendshape(_faceMeshRenderer));
                 else
-                    avatarMsg.Add(_blendshapeMsgPacker.BundleVRMDefaultBlendshape(_faceMeshRenderer));
+                    avatarMsg.Add(_blendshapeMsgPacker.PackVRMDefaultBlendshape(_faceMeshRenderer));
 
-            var vmcMsg = _vmcMsgPacker.GenerateVMCMessage(avatarMsg);
+            var vmcMsg = _vmcMsgPacker.PackVMCMessage(avatarMsg);
             _client.Send(vmcMsg);
         }
     }

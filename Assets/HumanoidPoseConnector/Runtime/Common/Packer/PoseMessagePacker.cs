@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 namespace HumanoidPoseConnector
 {
-    
-
     public class PoseMessagePacker
     {
         const string _address = "/VMC/Ext/Bone/Pos";
@@ -73,7 +71,7 @@ namespace HumanoidPoseConnector
             HumanBodyBones.RightLittleDistal,
         };
 
-        public Bundle GeneratePoseMessageBundle(Animator animator)
+        public Bundle PackPoseMessageBundle(Animator animator)
         {
             var bundle = new Bundle();
             foreach (var bone in poseBones)
@@ -86,7 +84,7 @@ namespace HumanoidPoseConnector
             return bundle;
         }
 
-        public Bundle GenerateHandMessageBundle(Animator animator)
+        public Bundle PackHandMessageBundle(Animator animator)
         {
             var bundle = new Bundle();
 

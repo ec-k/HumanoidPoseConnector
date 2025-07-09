@@ -7,7 +7,8 @@ namespace HumanoidPoseConnector
     {
         const string _address = "/VMC/Ext/Blend/Val";
 
-        public Bundle BundleVRMDefaultBlendshape(SkinnedMeshRenderer skm)
+
+        public Bundle PackVRMDefaultBlendshape(SkinnedMeshRenderer skm)
         {
             var bundle = new Bundle();
 
@@ -22,7 +23,7 @@ namespace HumanoidPoseConnector
             return bundle;
         }
 
-        public Bundle BundlePerfectSyncBlendshape(SkinnedMeshRenderer skm)
+        public Bundle PackPerfectSyncBlendshape(SkinnedMeshRenderer skm)
         {
             var bundle = new Bundle();
 
@@ -37,9 +38,9 @@ namespace HumanoidPoseConnector
             return bundle;
         }
 
-        // NOTE: this returns -1 when "name" is not found.
         float GetBlendshapeWeight(string name, SkinnedMeshRenderer skm)
         {
+            // NOTE: The index below is -1 when "name" is not found.
             var index = skm.sharedMesh.GetBlendShapeIndex(name);
             var weight = skm.GetBlendShapeWeight(index);
             return weight;
