@@ -50,7 +50,7 @@ namespace HumanoidPoseConnector
             }
         }
 
-        void SendAvatarPoseMessage()
+        void SendAvatarPoseMessage(Bundle? optionalMessage = null)
         {
             var avatarMsg = new Bundle(Timestamp.Now);
 
@@ -63,6 +63,8 @@ namespace HumanoidPoseConnector
                     avatarMsg.Add(_blendshapeMsgPacker.PackVRMDefaultBlendshape(_faceMeshRenderer));
 
             var vmcMsg = _vmcMsgPacker.PackVMCMessage(avatarMsg);
+            if(optionalMessage is not null)
+                vmcMsg.Add(optionalMessage);
             _client.Send(vmcMsg);
         }
     }
