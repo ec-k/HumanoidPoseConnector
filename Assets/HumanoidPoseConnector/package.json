@@ -1,6 +1,6 @@
 {
   "name": "com.ec2k.humanoidooseconnector",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "displayName": "HumanoidPoseConnector",
   "description": "Send & receive humanoid bone rotations via OSC.",
   "unity": "2022.3",
