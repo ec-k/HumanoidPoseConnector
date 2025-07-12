@@ -20,8 +20,7 @@ namespace HumanoidPoseConnector
         BlendshapeMessagePacker _blendshapeMsgPacker;
         VMCMessagePacker _vmcMsgPacker;
 
-        public bool IsActive { get; set; }
-
+        public bool IsAvailable => (_animator is not null) && (_faceMeshRenderer is not null);
         float _throttleTimer = 0f;
         float _sendingInterval => 1 / _sendingRate;
 
@@ -63,7 +62,7 @@ namespace HumanoidPoseConnector
                 else
                     avatarMsg.Add(_blendshapeMsgPacker.PackVRMDefaultBlendshape(_faceMeshRenderer));
 
-            var vmcMsg = _vmcMsgPacker.PackVMCMessage(avatarMsg);
+            var vmcMsg = _vmcMsgPacker.PackVMCMessage(avatarMsg, IsAvailable, Time.time);
             if(optionalMessage is not null)
                 vmcMsg.Add(optionalMessage);
             _client.Send(vmcMsg);

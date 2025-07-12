@@ -1,5 +1,4 @@
 using uOSC;
-using UnityEngine;
 
 namespace HumanoidPoseConnector
 {
@@ -8,16 +7,12 @@ namespace HumanoidPoseConnector
         const string AvailabilityMessageAddress = "/VMC/Ext/OK";
         const string TimeMessageAddress = "/VMC/Ext/T";
 
-        Animator _avatarAnimator;
-        SkinnedMeshRenderer _skm;
-
-        public Bundle PackVMCMessage(Bundle mainMessageBundle)
+        public Bundle PackVMCMessage(Bundle mainMessageBundle, bool isAvailable, float time)
         {
             var bundle = new Bundle();
          
-            var availability = (_avatarAnimator is not null) && (_skm is not null);
-            var availabilityMsg = GenerateAvailabilityMessage(availability);
-            var timeMsg = GenerateTimeMessage(Time.time);
+            var availabilityMsg = GenerateAvailabilityMessage(isAvailable);
+            var timeMsg = GenerateTimeMessage(time);
 
             bundle.Add(mainMessageBundle);
             bundle.Add(availabilityMsg);
