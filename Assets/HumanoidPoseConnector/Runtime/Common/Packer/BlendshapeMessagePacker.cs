@@ -29,8 +29,8 @@ namespace HumanoidPoseConnector
             var list = BlendshapeNameList.VRoidDefaultParameterNames;
             foreach (var name in list)
             {
-                var weight = GetBlendshapeWeight(name, skm);
-                bundle.Add(new Message(_address, name, weight));
+                var normalizedWeight = GetNormalizedWeight(name, skm);
+                bundle.Add(new Message(_address, name, normalizedWeight));
             }
 
             bundle.Add(new Message("/VMC/Ext/Blend/Apply"));
@@ -44,8 +44,8 @@ namespace HumanoidPoseConnector
             var list = BlendshapeNameList.PerfectSyncParameterNames;
             foreach (var name in list)
             {
-                var weight = GetBlendshapeWeight(name, skm);
-                bundle.Add(new Message(_address, name, weight));
+                var normalizedWeight = GetNormalizedWeight(name, skm);
+                bundle.Add(new Message(_address, name, normalizedWeight));
             }
 
             bundle.Add(new Message("/VMC/Ext/Blend/Apply"));
@@ -58,6 +58,13 @@ namespace HumanoidPoseConnector
             var index = skm.sharedMesh.GetBlendShapeIndex(name);
             var weight = skm.GetBlendShapeWeight(index);
             return weight;
+        }
+
+        float GetNormalizedWeight(string name, SkinnedMeshRenderer skm)
+        {
+            var weight = GetBlendshapeWeight(name, skm);
+            var normlaizedWeight = weight / 100f;
+            return normlaizedWeight;
         }
     }
 }
