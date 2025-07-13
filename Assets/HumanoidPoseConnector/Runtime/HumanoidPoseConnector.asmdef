@@ -2,7 +2,8 @@
     "name": "HumanoidPoseConnector",
     "rootNamespace": "HumanoidPoseConnector",
     "references": [
-        "GUID:e8063cf3a345f9c46b7c7c4f14d54285"
+        "GUID:e8063cf3a345f9c46b7c7c4f14d54285",
+        "GUID:05dd262a0c0a2f841b8252c8c3815582"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

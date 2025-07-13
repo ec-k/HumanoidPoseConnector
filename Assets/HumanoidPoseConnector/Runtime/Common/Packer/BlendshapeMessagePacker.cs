@@ -1,5 +1,6 @@
 using UnityEngine;
 using uOSC;
+using VRM;
 
 namespace HumanoidPoseConnector
 {
@@ -29,8 +30,12 @@ namespace HumanoidPoseConnector
             var list = BlendshapeNameList.VRoidDefaultParameterNames;
             foreach (var name in list)
             {
+                var presetName = BlendshapeUtils.VRoidDefualtToVRMDefault(name);
+                if (presetName == BlendShapePreset.Unknown)
+                    continue;
+
                 var normalizedWeight = GetNormalizedWeight(name, skm);
-                bundle.Add(new Message(_address, name, normalizedWeight));
+                bundle.Add(new Message(_address, presetName.ToString(), normalizedWeight));
             }
 
             bundle.Add(new Message("/VMC/Ext/Blend/Apply"));
