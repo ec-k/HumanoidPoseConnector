@@ -20,7 +20,7 @@ namespace HumanoidPoseConnector
         BlendshapeMessagePacker _blendshapeMsgPacker;
         VMCMessagePacker _vmcMsgPacker;
 
-        public bool IsAvailable => (_animator is not null) && (_faceMeshRenderer is not null);
+        public bool IsAvailable { get; set; }
         float _throttleTimer = 0f;
         float _sendingInterval => 1 / _sendingRate;
 
