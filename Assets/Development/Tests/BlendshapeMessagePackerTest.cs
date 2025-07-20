@@ -2,6 +2,7 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using VRM;
 
 namespace HumanoidPoseConnector.Tests {
     public class BlendshapeMessagePackerTest
@@ -14,9 +15,7 @@ namespace HumanoidPoseConnector.Tests {
             var avatar = GameObject.Instantiate(avatarPrefab);
             yield return null;
 
-            var faceObj = avatar.transform.Find("Face");
-            var skm = faceObj.GetComponent<SkinnedMeshRenderer>();
-
+            var proxy = avatar.GetComponent<VRMBlendShapeProxy>();
             var packer = new BlendshapeMessagePacker();
         }
 
@@ -28,9 +27,7 @@ namespace HumanoidPoseConnector.Tests {
             var avatar = GameObject.Instantiate(avatarPrefab);
             yield return null;
 
-            var faceObj = avatar.transform.Find("Face");
-            var skm = faceObj.GetComponent<SkinnedMeshRenderer>();
-
+            var proxy = avatar.GetComponent<VRMBlendShapeProxy>();
             var packer = new BlendshapeMessagePacker();
         }
     }
